@@ -1,0 +1,31 @@
+body {	
+	min-height: 100vh;
+}
+
+header {
+	height: 10em;
+	text-align: center;
+	background-color: red;
+}
+
+.form-control {
+	width: 50%;
+	display: inline-block;
+}
+
+.form-group {
+	margin: 3%;
+}
+
+.form-inline {
+	margin: 3%;
+}
+
+[class^="col"] {
+	background: #00A388;
+	min-height: 300px;
+	padding: 20px;
+	border: 1px solid #007864;
+	font-size: 20px;
+	color: #FFF;
+}
