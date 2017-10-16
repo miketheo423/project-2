@@ -22,7 +22,7 @@ header {
 }
 
 [class^="col"] {
-	background: #00A388;
+	background: rgb(0,0,0);
 	min-height: 300px;
 	padding: 20px;
 	border: 1px solid #007864;

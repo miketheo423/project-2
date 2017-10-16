@@ -1,13 +1,16 @@
 $(function () {
 	// Pull the discover movies api and make it into an object
 	let getPopMovies = $.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc').done(function(data) {
-		var movieList = data.results;
+		let movieList = data.results;
+		let moviePoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
 		// Iterate through the results array and display the results on the page.
 		for (let i = 0; i < movieList.length; i++) {
-			$('#discover-list').append('<li>' + movieList[i].title + '</li>');
-			console.log(movieList[i].title);
+			// Creates images and takes path from results to create the src
+			$('#discover-list').append(('<img src="' + moviePoster + movieList[i].poster_path + '">'));
+			$("img").addClass('col-md-3');
 		}
-
 	});
+
+	// Gives the imgs a bootstrap class to display four in a row.
 });
