@@ -7,7 +7,7 @@ $(function () {
 		// Iterate through the results array and display the results on the page.
 		for (let i = 0; i < movieList.length; i++) {
 			// Creates images and takes path from results to create the src
-			$('#discover-list').append(('<img src="' + moviePoster + movieList[i].poster_path + '">'));
+			$('#discover-list').append(('<a href="http://google.com">'+'<img src="' + moviePoster + movieList[i].poster_path + '">' + '</a>'));
 			$("img").addClass('col-md-3');
 		}
 	});
