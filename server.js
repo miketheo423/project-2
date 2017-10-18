@@ -20,14 +20,18 @@ app.set('view engine', 'ejs');
 // let routes = require(__dirname + '/config/routes');
 // app.use('/', routes);
 
-app.get('/', function (req, res) {
-	res.sendFile(__dirname + '/views/index.html');
-});
+// app.get('/', function (req, res) {
+// 	res.sendFile(__dirname + '/views/index.html');
+// });
 
 //Route for discover page
 app.get('/discover', function(req, res) {
 	res.render('discover');
 });
+
+// Require all the routes
+let routes = require('./config/routes');
+app.use(routes);
 
 // Start server
 app.listen(process.env.PORT || 3000, function () {

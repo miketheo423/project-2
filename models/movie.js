@@ -4,3 +4,5 @@ let MovieSchema = mongoose.Schema({
 		name: String,
 		
 });
+
+let Movie = mongoose.model('')

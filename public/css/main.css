@@ -16,8 +16,12 @@ h1 {
 .center-content {
   width: 40%;
   text-align: center;
-  position: relative;
+  position: absolute;
   top: 50%;
+  left: 25%;
   background-color: rgba(0,0,0,.5);
+  border-radius: 8px;
+  padding: 2em;
+  color: white;
 }
 
