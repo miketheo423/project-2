@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Watch This</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/discover.css">
-
-</head>
-<body>
-	<header>
-		<h1>Discover</h1>
-	</header>
+<% include ./partials/header.ejs %>
 
 <form>
   <div class="form-group">
@@ -39,11 +25,5 @@
 	<div id="discover-list" class="container-fluid">
 		<!-- Data from the api will be shown here -->
 	</div>
-</body>
-<!-- jQuery -->
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="scripts/app.js"></script>
-</html>
+<% include ./partials/footer.ejs %>
