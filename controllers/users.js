@@ -36,4 +36,10 @@ function getLogout(request, response, next) {
 	response.redirect('/');
 }
 
-// Secret Page
+module.exports = {
+  getLogin: getLogin,
+  postLogin: postLogin ,
+  getSignup: getSignup,
+  postSignup: postSignup,
+  getLogout: getLogout
+};

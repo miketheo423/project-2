@@ -28,6 +28,6 @@ router.route('/login')
 
 // Discover movies page route
 router.route('/discover-movies')
- 	.get(movieController.discoverMovies);
+ 	.get(authenticatedUser, movieController.discoverMovies);
 	
 module.exports = router;

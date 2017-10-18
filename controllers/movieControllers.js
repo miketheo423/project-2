@@ -1,8 +1,9 @@
 // var db = require('../models');
+ 
 
-let discoverMovies = function(req, res) {
+ function discoverMovies(req, res, next) {
 	res.render('discover-movies');
-};
+}
 
 
 
