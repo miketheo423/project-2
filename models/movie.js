@@ -5,4 +5,6 @@ let MovieSchema = mongoose.Schema({
 		
 });
 
-let Movie = mongoose.model('')
+let Movie = mongoose.model('Movie', MovieSchema);
+
+module.exports = Movie;

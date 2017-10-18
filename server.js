@@ -9,17 +9,10 @@ app.use(bodyParser.urlencoded({ extended: true}));
 // Serve static files from public folder
 app.use(express.static(__dirname + '/public'));
 
-
-
 // Set up ejs
 app.set('views', __dirname + "/views");
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
-
-// //Route for discover page
-// app.get('/discover', function(req, res) {
-// 	res.render('discover');
-// });
 
 // Require all the routes
 let routes = require('./config/routes');

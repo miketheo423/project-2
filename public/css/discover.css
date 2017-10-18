@@ -4,13 +4,23 @@ body {
 }
 
 header {
-	height: 10em;
+	height: 8em;
 	text-align: center;
 	background-color: rgba(255,0,0,.8);
+	position: fixed;
+	z-index: 5;
+	width: 100%;
+	top: 0;
+
 }
 
 h1 {
 	font-size: 7em;
+}
+
+form {
+	position: relative; 
+	top: 10em;
 }
 
 .form-control {
@@ -31,4 +41,9 @@ h1 {
 	min-height: 300px;
 	padding: 20px;
 	border: 1px solid white;
+}
+
+.container-fluid {
+	position: relative;
+	top: 12em;
 }

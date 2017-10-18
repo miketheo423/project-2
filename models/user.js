@@ -5,7 +5,8 @@ let UserSchema = mongoose.Schema({
 	local: {
 		email: String,
 		password: String
-	}
+	},
+	movies: [MovieSchema]
 });
 
 let User = mongoose.model('User', UserSchema);
