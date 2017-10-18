@@ -8,13 +8,21 @@
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+  <!-- Main bar at top of screen -->
   <header>
     <h1>Watch This.</h1>
   </header>
-    <div class="center-content">
-      <h2>Signup</h2>
 
-      <form method="post" action="/login">
+  <!-- Login box at center of screen -->
+    <div class="center-content">
+
+    <!--Used for alert if login info cannot be found  -->
+      <% if (message.length > 0) { %>
+      <div class="alert alert-danger"><%= message %></div>
+      <% } %>
+      
+      <h2>Signup</h2>
+      <form method="post" action="/signup">
         <div class="form-group">
           <label for="email">Email</label>
           <input class="form-control" type="text" name="email" id="email">

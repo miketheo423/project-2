@@ -20,11 +20,17 @@ router.route('/')
 
 // Signup route
 router.route('/signup')
-	.get(staticsController.signup);
+	.get(usersController.getSignup)
+	.post(usersController.postSignup);
 
 // Login route
 router.route('/login')
-	.get(staticsController.login);
+	.get(usersController.getLogin)
+	.post(usersController.postLogin);
+
+// Logout route
+router.route('/logout')
+	.get(usersController.getLogout);
 
 // Discover movies page route
 router.route('/discover-movies')

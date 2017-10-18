@@ -1,4 +1,6 @@
 var passport = require('passport');
+const flash = require('connect-flash');
+const session = require('express-session');
 
 // GET /signup
 function getSignup(request, response, next) {
@@ -16,7 +18,7 @@ function postSignup(request, response, next) {
 }
 
 // GET /login
-function getLogin(request, response) {
+function getLogin(request, response, next) {
 	response.render('login', {message: request.flash('loginMessage')});
 }
 

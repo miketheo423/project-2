@@ -8,12 +8,19 @@
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
+  <!-- Main bar at top of screen -->
   <header>
     <h1>Watch This.</h1>
   </header>
-    <div class="center-content">
-      <h2>Login</h2>
 
+  <!-- Login box at center of screen -->
+    <div class="center-content">
+
+      <!--Used for alert if login info cannot be found  -->
+      <% if (message.length > 0) { %>
+      <div class="alert alert-danger"><%= message %></div>
+      <% } %>
+      <h2>Login</h2>
       <form method="post" action="/login">
         <div class="form-group">
           <label for="email">Email</label>

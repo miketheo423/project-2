@@ -1,10 +1,18 @@
-// Set up express
-const express = require('express');
-const app = express();
+var express      = require('express');
+var app          = express();
+var mongoose     = require('mongoose');
+var passport     = require('passport');
+var flash        = require('connect-flash');
+var morgan       = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
 
-// Set up bodyParser
-const bodyParser = require('body-parser');
+// Sets up body parser
 app.use(bodyParser.urlencoded({ extended: true}));
+
+mongoose.connect('mongodb://localhost/watch_this'); 
+
 
 // Serve static files from public folder
 app.use(express.static(__dirname + '/public'));
@@ -13,6 +21,15 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + "/views");
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
+
+app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+app.use(passport.initialize());
+app.use(passport.session()); 
+app.use(flash()); 
+
+// Require passport
+require('./config/passport')(passport);
+
 
 // Require all the routes
 let routes = require('./config/routes');
