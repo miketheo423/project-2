@@ -9,8 +9,10 @@ $(function () {
 			// Creates images and takes path from results to create the src
 			$('#discover-list').append(('<a href="http://google.com">'+'<img src="' + moviePoster + movieList[i].poster_path + '">' + '</a>'));
 		}
+		// Gives the imgs a bootstrap class to display four in a row.
 		$("img").addClass('col-md-3');
 	});
 
-	// Gives the imgs a bootstrap class to display four in a row.
+	
+
 });
