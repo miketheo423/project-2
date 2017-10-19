@@ -10,7 +10,7 @@ $(function () {
 			$('#discover-list').append(('<a href="http://google.com">'+'<img src="' + moviePoster + movieList[i].poster_path + '">' + '</a>'));
 		}
 		// Gives the imgs a bootstrap class to display four in a row.
-		$("img").addClass('col-md-3');
+		$("img").addClass('col-md-3').attr('id', 'api-movies');
 	});
 
 	
