@@ -2,7 +2,8 @@
  
 
  function discoverMovies(req, res, next) {
-	res.render('discover-movies');
+ 	console.log(req.user);
+	res.render('discover-movies', req.user);
 }
 
 

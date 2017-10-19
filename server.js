@@ -11,6 +11,7 @@ var session      = require('express-session');
 // Sets up body parser
 app.use(bodyParser.urlencoded({ extended: true}));
 
+// Connect to the DB
 mongoose.connect('mongodb://localhost/watch_this'); 
 
 
