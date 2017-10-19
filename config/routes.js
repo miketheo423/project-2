@@ -35,5 +35,9 @@ router.route('/logout')
 // Discover movies page route
 router.route('/discover-movies')
  	.get(movieController.discoverMovies);
+
+// Discover shows page route
+router.route('/discover-shows')
+	.get(movieController.discoverShows);
 	
 module.exports = router;
