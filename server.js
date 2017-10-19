@@ -12,7 +12,10 @@ var session      = require('express-session');
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // Connect to the DB
-mongoose.connect('mongodb://localhost/watch_this'); 
+mongoose.connect(	process.env.MONGODB_URI || 
+                  process.env.MONGOLAB_URI || 
+                  process.env.MONGOHQ_URL || 
+                  'mongodb://localhost/watch_this'); 
 
 
 // Serve static files from public folder
