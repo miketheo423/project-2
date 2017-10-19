@@ -1,5 +1,9 @@
 $(function () {
 
+/////////////////////////////////////
+////// Disover Movies Section ///////
+/////////////////////////////////////
+
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-movies') {
 		// Pull the discover movies api and make it into an object
@@ -15,6 +19,39 @@ $(function () {
 			// Gives the imgs a bootstrap class to display four in a row.
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 		});
+
+	// Prevents enter key from refreshing page
+	$('#search-bar').submit(function() {
+		event.preventDefault();
+	});
+
+	// Calls api to search when search form is submitted
+	$('#search-bar-btn').on('click', function() {
+		event.preventDefault();
+		let searchQuery = $('#search-bar').val();
+		console.log(searchQuery);
+		// Make the get request for shows or movies depening on the search query
+		$.get('https://api.themoviedb.org/3/search/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery).done(function(data) {
+			console.log(data);
+			$('.entertainment-list').empty();
+			let mediaList = data.results;
+			console.log(mediaList);
+			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+
+			// Iterate through the results array and display the results on the page.
+			for (let i = 0; i < mediaList.length; i++) {
+				// Creates images and takes path from results to create the src
+				if (mediaList[i].title !== undefined && mediaList[i].poster_path !==null) {
+				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+				// Gives the imgs a bootstrap class to display four in a row.
+				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+				}
+			}
+		});
+		//clear the search form
+		$('#search-var').val('');
+	});
+
 	
 
 		// Change populated movies based on genre dropdown
@@ -38,36 +75,11 @@ $(function () {
 		});
 	}
 
-	// Prevents enter key from refreshing page
-	$('#search-bar').submit(function() {
-		event.preventDefault();
-	});
 
-	// Calls api to search when search form is submitted
-	$('#search-bar-btn').on('click', function() {
-		event.preventDefault();
-		let searchQuery = $('#search-bar').val();
-		console.log(searchQuery);
-		// Make the get request for shows or movies depening on the search query
-		$.get('https://api.themoviedb.org/3/search/multi?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery + '&region=United%20States').done(function(data) {
-			console.log(data);
-			$('.entertainment-list').empty();
-			let mediaList = data.results;
-			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+/////////////////////////////////////
+////// Disover Shows Section ////////
+/////////////////////////////////////
 
-			// Iterate through the results array and display the results on the page.
-			for (let i = 0; i < mediaList.length; i++) {
-				// Creates images and takes path from results to create the src
-				if (mediaList[i].title !== undefined && mediaList[i].poster_path !==null) {
-				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
-				// Gives the imgs a bootstrap class to display four in a row.
-				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
-				}
-			}
-		});
-		//clear the search form
-		$('#search-var').val('');
-	});
 
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-shows') {
@@ -85,6 +97,38 @@ $(function () {
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 		});
 	
+	// Prevents enter key from refreshing page
+	$('#search-bar').submit(function() {
+		event.preventDefault();
+	});
+
+	// Calls api to search when search form is submitted
+	$('#search-bar-btn').on('click', function() {
+		event.preventDefault();
+		let searchQuery = $('#search-bar').val();
+		console.log(searchQuery);
+		// Make the get request for shows or movies depening on the search query
+		$.get('https://api.themoviedb.org/3/search/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery).done(function(data) {
+			console.log(data);
+			$('.entertainment-list').empty();
+			let mediaList = data.results;
+			console.log(mediaList);
+			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+
+			// Iterate through the results array and display the results on the page.
+			for (let i = 0; i < mediaList.length; i++) {
+				// Creates images and takes path from results to create the src
+				if (mediaList[i].poster_path !==null) {
+				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+				// Gives the imgs a bootstrap class to display four in a row.
+				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+				}
+			}
+		});
+		//clear the search form
+		$('#search-var').val('');
+	});
+
 	
 	// Gets tv shows based on genre
 	$('#genre-btn-tv').on('click', function() {

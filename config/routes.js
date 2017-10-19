@@ -5,7 +5,7 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const usersController = require('../controllers/users');
 const staticsController = require('../controllers/statics');
-const movieController = require('../controllers/movieControllers');
+const mediaController = require('../controllers/mediaControllers');
 
 function authenticatedUser(req, res, next) {
 	// If user is authenticated then continue execution
@@ -34,10 +34,14 @@ router.route('/logout')
 
 // Discover movies page route
 router.route('/discover-movies')
- 	.get(movieController.discoverMovies);
+ 	.get(mediaController.discoverMovies);
 
 // Discover shows page route
 router.route('/discover-shows')
-	.get(movieController.discoverShows);
+	.get(mediaController.discoverShows);
+
+// Media-profile page
+router.route('/media-profile')
+	.get(mediaController.mediaProfile);
 	
 module.exports = router;
