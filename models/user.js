@@ -8,7 +8,8 @@ let User = mongoose.Schema({
 		email: String,
 		password: String
 	},
-	movies: []
+	queuedMovies: [],
+	queuedShows: []
 });
 
 

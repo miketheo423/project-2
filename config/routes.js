@@ -42,8 +42,8 @@ router.route('/discover-shows')
 	.get(mediaController.discoverShows);
 
 // Media-profile page
-router.route('/media-profile')
-	.get(mediaController.mediaProfile);
+router.route('/movie-profile')
+	.get(mediaController.movieProfile);
 
 
 	

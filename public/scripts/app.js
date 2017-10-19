@@ -14,11 +14,10 @@ $(function () {
 			// Iterate through the results array and display the results on the page.
 			for (let i = 0; i < mediaList.length; i++) {
 				let mediaId = mediaList[i].id;
-				console.log(mediaId);
 				if (mediaList[i].poster_path !==null) {
 
 				// Creates images and takes path from results to create the src
-				$('.entertainment-list').append(('<a href="/media-profile?id=' + mediaId + '">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+				$('.entertainment-list').append(('<a href="/movie-profile?id=' + mediaId + '">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
 
 			}
 			// Gives the imgs a bootstrap class to display four in a row.
@@ -41,7 +40,6 @@ $(function () {
 			console.log(data);
 			$('.entertainment-list').empty();
 			let mediaList = data.results;
-			console.log(mediaList);
 			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
 			// Iterate through the results array and display the results on the page.
