@@ -7,6 +7,7 @@ const usersController = require('../controllers/users');
 const staticsController = require('../controllers/statics');
 const mediaController = require('../controllers/mediaControllers');
 
+
 function authenticatedUser(req, res, next) {
 	// If user is authenticated then continue execution
 	if (req.isAuthenticated()) return next();
@@ -43,5 +44,7 @@ router.route('/discover-shows')
 // Media-profile page
 router.route('/media-profile')
 	.get(mediaController.mediaProfile);
+
+
 	
 module.exports = router;

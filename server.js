@@ -26,7 +26,7 @@ app.set('views', __dirname + "/views");
 app.engine('ejs', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
-app.use(session({ secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS' })); 
+app.use(session({ secret: 'Watch This' })); 
 app.use(passport.initialize());
 app.use(passport.session()); 
 app.use(flash()); 

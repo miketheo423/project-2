@@ -7,17 +7,23 @@ $(function () {
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-movies') {
 		// Pull the discover movies api and make it into an object
-		let getPopMovies = $.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc').done(function(data) {
-			let movieList = data.results;
-			let moviePoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+		$.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc').done(function(data) {
+			let mediaList = data.results;
+			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
 			// Iterate through the results array and display the results on the page.
-			for (let i = 0; i < movieList.length; i++) {
+			for (let i = 0; i < mediaList.length; i++) {
+				let mediaId = mediaList[i].id;
+				console.log(mediaId);
+				if (mediaList[i].poster_path !==null) {
+
 				// Creates images and takes path from results to create the src
-				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + moviePoster + movieList[i].poster_path + '">' + '</a>'));
+				$('.entertainment-list').append(('<a href="/media-profile?id=' + mediaId + '">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+
 			}
 			// Gives the imgs a bootstrap class to display four in a row.
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+		}
 		});
 
 	// Prevents enter key from refreshing page
@@ -42,7 +48,7 @@ $(function () {
 			for (let i = 0; i < mediaList.length; i++) {
 				// Creates images and takes path from results to create the src
 				if (mediaList[i].title !== undefined && mediaList[i].poster_path !==null) {
-				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+				$('.entertainment-list').append(('<a href="/media-profile">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
 				// Gives the imgs a bootstrap class to display four in a row.
 				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 				}
@@ -61,16 +67,18 @@ $(function () {
 			// Make the get request for the movies depending on the genre
 			$.get('https://api.themoviedb.org/3/genre/' + genreId + '/movies?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&include_adult=false&sort_by=created_at.asc').done(function(data) {
 				$('.entertainment-list').empty();
-				let movieList = data.results;
-				let moviePoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+				let mediaList = data.results;
+				let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
 				// Iterate through the results array and display the results on the page.
-				for (let i = 0; i < movieList.length; i++) {
-					// Creates images and takes path from results to create the src
-					$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + moviePoster + movieList[i].poster_path + '">' + '</a>'));
-				}
-				// Gives the imgs a bootstrap class to display four in a row.
-				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+				for (let i = 0; i < mediaList.length; i++) {
+					if (mediaList[i].poster_path !==null) {
+				// Creates images and takes path from results to create the src
+				$('.entertainment-list').append(('<a href="/media-profile">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+			}
+			// Gives the imgs a bootstrap class to display four in a row.
+			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+		}
 			});
 		});
 	}
@@ -84,17 +92,19 @@ $(function () {
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-shows') {
 		// Pull the discover movies api and make it into an object
-		let getTv = $.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page=1').done(function(data) {
-			let tvList = data.results;
-			let tvPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+		$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page=1').done(function(data) {
+			let mediaList = data.results;
+			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
 			// Iterate through the results array and display the results on the page.
-			for (let i = 0; i < tvList.length; i++) {
+			for (let i = 0; i < mediaList.length; i++) {
+				if (mediaList[i].poster_path !==null) {
 				// Creates images and takes path from results to create the src
-				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + tvPoster + tvList[i].poster_path + '">' + '</a>'));
+				$('.entertainment-list').append(('<a href="/media-profile">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
 			}
 			// Gives the imgs a bootstrap class to display four in a row.
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+		}
 		});
 	
 	// Prevents enter key from refreshing page
@@ -119,7 +129,7 @@ $(function () {
 			for (let i = 0; i < mediaList.length; i++) {
 				// Creates images and takes path from results to create the src
 				if (mediaList[i].poster_path !==null) {
-				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
+				$('.entertainment-list').append(('<a href="/media-profile">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
 				// Gives the imgs a bootstrap class to display four in a row.
 				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 				}
@@ -134,22 +144,28 @@ $(function () {
 	$('#genre-btn-tv').on('click', function() {
 		event.preventDefault();
 		let genreId = $('.genres-form option:selected').val();
-		console.log(genreId);
 		//Make the get request for tv shows depending on the genre
 		$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page=1&with_genres=' + genreId).done(function(data) {
 		$('.entertainment-list').empty();
-			let tvList = data.results;
-			let tvPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
+			console.log(data.results);
+			let mediaList = data.results;
+			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 			// Iterate through the results array and display the results on the page.
-			for (let i = 0; i < tvList.length; i++) {
+			for (let i = 0; i < mediaList.length; i++) {
+
+			if (mediaList[i].poster_path !==null) {
 				// Creates images and takes path from results to create the src
-				$('.entertainment-list').append(('<a href="http://google.com">'+'<img src="' + tvPoster + tvList[i].poster_path + '">' + '</a>'));
+				$('.entertainment-list').append(('<a href="/media-profile">'+'<img src="' + mediaPoster + mediaList[i].poster_path + '">' + '</a>'));
 			}
 			// Gives the imgs a bootstrap class to display four in a row.
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
+		}
 		});
 	});
 }
 
+////////////////////////////////
+// Media Profile Page Section //
+////////////////////////////////
 
 });
