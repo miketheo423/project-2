@@ -29,7 +29,7 @@ function tvProfile(req, res, next) {
 
 function queuedMovies(req, res, next) {
 	console.log(req.user.local.email);
-	db.User.findOne({'local.email' : res.locals.currentUser.local.email}, function(err, data){
+	db.User.findOne({'local.email' : req.user.local.email}, function(err, data){
 	if (err) throw err;
 	res.render('queued-movies', {data});
 });
