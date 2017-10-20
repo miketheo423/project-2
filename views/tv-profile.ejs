@@ -25,7 +25,12 @@
             <li><span class="bold">First Air Date:</span> <%= response.data.first_air_date %></li>
             <li><span class="bold">Vote Average:</span> <%= response.data.vote_average %></li>
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
+            <div class="added">
+              <li><button id="queue-btn" type="submit" form="tv-form" value="Add to queue">Add to queue</button></li>
+            </div>
         </div>
+        <form action='/tv-profile?id=<%= response.data.id %>' method="POST" id="tv-form"
+        </form>
 
       </div>
       <!-- /.row -->

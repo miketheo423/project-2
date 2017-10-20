@@ -2,9 +2,8 @@ const mongoose = require('mongoose');
 
 let ShowSchema = mongoose.Schema({
 		id: String,
-		title: String,
+		name: String,
 		poster_path: String,
-		overview: String
 });
 
 let Show = mongoose.model('Show', ShowSchema);

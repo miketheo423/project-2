@@ -163,13 +163,9 @@ $(function () {
 // Media Profile Page Section //
 ////////////////////////////////
 
-$('#add-queue-movie').on('click', function() {
-	event.preventDefault();
+$('#queue-btn').on('click', function() {
 	console.log('clicked');
-	$.ajax({
-		url: "/movie-profile",
-		type: "POST"
-	});
+	$('.added').append('<p>' + 'successfully added');
 });
 
 });

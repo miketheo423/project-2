@@ -48,7 +48,8 @@ router.route('/movie-profile')
 
 // TV-profile page
 router.route('/tv-profile')
-	.get(mediaController.tvProfile);
+	.get(mediaController.tvProfile)
+	.post(mediaController.addShowToQueue);
 
 // Queued movies page
 router.route('/queued-movies')
