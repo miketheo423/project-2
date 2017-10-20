@@ -3,25 +3,30 @@
     <div class="container content">
 
       <!-- Portfolio Item Heading -->
-      <h1 class="my-4"><%= name  %></h1>
+      <h1 class="my-4"><%= response.data.name  %></h1>
 
       <!-- Portfolio Item Row -->
       <div class="row">
 
         <div class="col-md-6">
-          <img class="img-fluid" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= poster_path %>" alt="">
+          <img class="img-fluid" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= response.data.poster_path %>" alt="">
         </div>
 
         <div class="col-md-6">
           <h3 class="my-3">Synopsis:</h3>
-          <p><%= overview %></p>
-          <!-- <h3 class="my-3">Project Details</h3>
+          <p><%= response.data.overview %></p>
+          <h3 class="my-3">Details: </h3>
           <ul>
-            <li>Lorem Ipsum</li>
-            <li>Dolor Sit Amet</li>
-            <li>Consectetur</li>
-            <li>Adipiscing Elit</li>
-          </ul> -->
+            <li><span class="bold">Genres:</span> <% for (let i = 0; i < response.data.genres.length; i++) { %>
+                  <span><%= response.data.genres[i].name %>. </span>
+           <% } %> 
+            </li>
+            <li><span class="bold">Number of Seasons:</span> <%= response.data.number_of_seasons %></li>
+            <li><span class="bold">Number of Spisodes:</span> <%= response.data.number_of_episodes %></li>
+            <li><span class="bold">First Air Date:</span> <%= response.data.first_air_date %></li>
+            <li><span class="bold">Vote Average:</span> <%= response.data.vote_average %></li>
+            <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
+          </ul>
         </div>
 
       </div>
