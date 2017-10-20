@@ -1,14 +1,13 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
-
-// let Movie= require('./movie.js');
+let Movie = require('./movie.js');
 
 let User = mongoose.Schema({
 	local: {
 		email: String,
 		password: String
 	},
-	queuedMovies: [],
+	queuedMovies: [Movie.schema],
 	queuedShows: []
 });
 

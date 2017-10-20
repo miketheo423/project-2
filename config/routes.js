@@ -41,9 +41,13 @@ router.route('/discover-movies')
 router.route('/discover-shows')
 	.get(mediaController.discoverShows);
 
-// Media-profile page
+// Movie-profile page
 router.route('/movie-profile')
 	.get(mediaController.movieProfile);
+
+// TV-profile page
+router.route('/tv-profile')
+	.get(mediaController.tvProfile);
 
 
 	
