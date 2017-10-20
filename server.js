@@ -12,6 +12,7 @@ var session      = require('express-session');
 app.use(bodyParser.urlencoded({ extended: true}));
 
 // Connect to the DB
+mongoose.Promise = global.Promise;
 mongoose.connect(	process.env.MONGODB_URI || 
                   process.env.MONGOLAB_URI || 
                   process.env.MONGOHQ_URL || 
@@ -34,6 +35,7 @@ app.use(flash());
 // Require passport
 require('./config/passport')(passport);
 
+// Tracks the current user
 app.use(function(req, res, next) {
 	res.locals.currentUser = req.user;
 	next();

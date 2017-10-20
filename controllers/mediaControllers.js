@@ -1,9 +1,8 @@
 var db = require('../models');
-
 const axios = require('axios');
 
 
- function discoverMovies(req, res, next) {
+function discoverMovies(req, res, next) {
 	res.render('discover-movies', req.user);
 }
 
@@ -13,10 +12,27 @@ function discoverShows(req, res, next) {
 
 function movieProfile(req, res, next) {
 	let mediaId = req.query;
-	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id +'?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
+	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
 	.then(function(response) {	
 	res.render('movie-profile', {response});
 	});
+}
+
+function addMovieToQueue(req, res, next) {
+	console.log("route hit");
+	let mediaId = req.query;
+	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
+	.then(function(response) {	
+	let newMovie = new db.Movie ({
+		id: response.data.id,
+		title: response.data.title,
+		poster_path: response.data.poster_path,
+	});
+	console.log(newMovie);
+	req.user.queuedMovies.push(newMovie);
+	req.user.save();
+	res.render('movie-profile', {response});
+});
 }
 
 function tvProfile(req, res, next) {
@@ -46,5 +62,6 @@ module.exports = {
 	movieProfile: movieProfile,
 	tvProfile: tvProfile,
 	queuedMovies: queuedMovies,
-	queuedShows: queuedShows
+	queuedShows: queuedShows,
+	addMovieToQueue: addMovieToQueue
 };

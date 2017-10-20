@@ -1,4 +1,6 @@
 <% include ./partials/header.ejs %>
-<span class="data"><%= data._id %></span>
+<span class="data"><%= data.queuedMovies %></span>
+
+<img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.queuedMovies[0].poster_path %>">
 
 <% include ./partials/footer.ejs %>

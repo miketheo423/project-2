@@ -43,7 +43,8 @@ router.route('/discover-shows')
 
 // Movie-profile page
 router.route('/movie-profile')
-	.get(mediaController.movieProfile);
+	.get(mediaController.movieProfile)
+	.post(mediaController.addMovieToQueue);
 
 // TV-profile page
 router.route('/tv-profile')
@@ -56,6 +57,10 @@ router.route('/queued-movies')
 // Queued shows page
 router.route('/queued-shows')
 	.get(mediaController.queuedShows);
+
+// Add movie route 
+// router.route('/movie-profile/add')
+// 	.post(mediaController.addMovieToQueue);
 
 
 	

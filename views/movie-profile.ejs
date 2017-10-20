@@ -28,7 +28,10 @@
             <% if(response.data.homepage !== "") { %>
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
             <% } %>
+            <button type="submit" form="movie-form" value="Add to queue">Add to queue</button>
         </div>
+        <form action='/movie-profile?id=<%= response.data.id %>' method="POST" id="movie-form"
+        </form>
 
       </div>
       <!-- /.row -->
