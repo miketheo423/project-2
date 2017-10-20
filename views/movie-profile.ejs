@@ -13,11 +13,12 @@
         </div>
 
         <div class="col-md-6">
-          <h2 class="my-3">"<%= response.data.tagline %>"</h2>
-          <h3 class="my-3">Synopsis:</h3>
+          <h2><% if(response.data.tagline !==null) { %>
+                          <%= response.data.tagline %> 
+                            <% } %></h2>
+          <h3 class="info">Synopsis:</h3>
           <p><%= response.data.overview %></p>
-          <h3 class="my-3">Details:</h3>
-          <ul>
+          <h3 class="info">Details:</h3>
             <li><span class="bold">Genres:</span> <% for (let i = 0; i < response.data.genres.length; i++) { %>
                   <span><%= response.data.genres[i].name %>. </span>
            <% } %> 
@@ -25,7 +26,6 @@
             <li><span class="bold">Release Date:</span> <%= response.data.release_date %></li>
             <li><span class="bold">Vote Average:</span> <%= response.data.vote_average %></li>
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
-          </ul>
         </div>
 
       </div>

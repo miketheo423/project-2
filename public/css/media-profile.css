@@ -13,8 +13,16 @@ li {
 
 .bold {
 	font-weight: bold;
+	margin-right: 1em;
 }
+
 
 h2 {
 	color: #25A2B6;
+	font-weight: bold;
+	margin-top: 1em; 
+}
+
+.info {
+	margin: 2em 0 1em 0;
 }

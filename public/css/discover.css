@@ -1,8 +1,8 @@
 body {	
 	min-height: 100vh;
 	/*background-color: rgb(204, 17, 34);*/
-	background-image: url('../img/red-chairs.jpeg')
-
+	background-image: url('../img/redder-chairs.jpeg');
+	background-size: cover;
 }
 
 .p-4 {
@@ -15,7 +15,7 @@ body {
 
 h1 {
 	color: white;
-	font-size: 80px;
+	font-size: 4.5em;
 	margin-right: 1em;
 }
 
