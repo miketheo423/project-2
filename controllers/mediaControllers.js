@@ -1,5 +1,6 @@
 var db = require('../models');
 const axios = require('axios');
+// const request = require('request');
 
 
 function discoverMovies(req, res, next) {
@@ -69,7 +70,11 @@ function queuedMovies(req, res, next) {
 }
 
 function queuedShows(req, res, next) {
-	res.render('queued-shows');
+	console.log(req.user.local.email);
+	db.User.findOne({'local.email' : req.user.local.email}, function(err, data){
+	if (err) throw err;
+	res.render('queued-shows', {data});
+});
 }
 
 

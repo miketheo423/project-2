@@ -1,4 +1,10 @@
 <% include ./partials/header.ejs %>
 
+<% for (let i = 0; i < data.queuedShows.length; i++) { %>
+
+	<img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.queuedShows[i].poster_path %>">
+
+<% } %>
+
 
 <% include ./partials/footer.ejs %>
