@@ -49,6 +49,14 @@ router.route('/movie-profile')
 router.route('/tv-profile')
 	.get(mediaController.tvProfile);
 
+// Queued movies page
+router.route('/queued-movies')
+	.get(mediaController.queuedMovies);
+
+// Queued shows page
+router.route('/queued-shows')
+	.get(mediaController.queuedShows);
+
 
 	
 module.exports = router;

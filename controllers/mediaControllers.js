@@ -1,4 +1,5 @@
-// var db = require('../models');
+var db = require('../models');
+
 const axios = require('axios');
 
 
@@ -26,10 +27,22 @@ function tvProfile(req, res, next) {
 	});
 }
 
+function queuedMovies(req, res, next) {
+	db.User.find({}, function(err, data){
+	res.render('queued-movies', {data});
+});
+}
+
+function queuedShows(req, res, next) {
+	res.render('queued-shows');
+}
+
 
 module.exports = {
 	discoverMovies: discoverMovies,
 	discoverShows: discoverShows,
 	movieProfile: movieProfile,
-	tvProfile: tvProfile
+	tvProfile: tvProfile,
+	queuedMovies: queuedMovies,
+	queuedShows: queuedShows
 };
