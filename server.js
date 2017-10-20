@@ -34,6 +34,11 @@ app.use(flash());
 // Require passport
 require('./config/passport')(passport);
 
+app.use(function(req, res, next) {
+	res.locals.currentUser = req.user;
+	next();
+});
+
 
 // Require all the routes
 let routes = require('./config/routes');
