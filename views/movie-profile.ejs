@@ -25,7 +25,9 @@
             </li>
             <li><span class="bold">Release Date:</span> <%= response.data.release_date %></li>
             <li><span class="bold">Vote Average:</span> <%= response.data.vote_average %></li>
+            <% if(response.data.homepage !== "") { %>
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
+            <% } %>
         </div>
 
       </div>
