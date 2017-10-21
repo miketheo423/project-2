@@ -1,6 +1,6 @@
 var db = require('../models');
 const axios = require('axios');
-// const request = require('request');
+const request = require('request');
 
 
 function discoverMovies(req, res, next) {
@@ -48,16 +48,28 @@ function addShowToQueue(req, res, next) {
 	console.log("route hit");
 	let mediaId = req.query;
 	axios.get('https://api.themoviedb.org/3/tv/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
-	.then(function(response) {	
-	let newShow = new db.Show ({
-		id: response.data.id,
-		name: response.data.name,
-		poster_path: response.data.poster_path,
-	});
-	console.log(newShow);
-	req.user.queuedShows.push(newShow);
-	req.user.save();
-	// res.render('tv-profile', {response});
+	.then(function(response) {
+	db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+		let shows = data.queuedShows;
+		let showId = JSON.stringify(response.data.id);
+		let newShow = new db.Show ({
+					id: response.data.id,
+					name: response.data.name,
+					poster_path: response.data.poster_path,
+		});
+		console.log(newShow);
+		let results = shows.filter(function(show) {
+			if (show.id.includes(showId)) {
+				return true;
+			}
+			 return false;
+		});
+		console.log(results);
+		if(results.length == 0) {
+			req.user.queuedShows.push(newShow);
+			req.user.save();
+		}
+		});
 	});
 }
 
