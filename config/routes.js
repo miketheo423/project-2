@@ -59,9 +59,6 @@ router.route('/queued-movies')
 router.route('/queued-shows')
 	.get(mediaController.queuedShows);
 
-// Add movie route 
-// router.route('/movie-profile/add')
-// 	.post(mediaController.addMovieToQueue);
 
 
 	

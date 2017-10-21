@@ -164,8 +164,8 @@ $(function () {
 ////////////////////////////////
 
 $('#queue-btn').on('click', function() {
-	console.log('clicked');
-	$('.added').append('<p>' + 'successfully added');
+	$('.added').empty();
+	$('.added').append('<p>' + 'Successfully Added');
 });
 
 });
