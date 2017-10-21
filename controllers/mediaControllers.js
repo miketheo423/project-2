@@ -11,6 +11,8 @@ function discoverShows(req, res, next) {
 	res.render('discover-shows', req.user);
 }
 
+
+// Movie profile controller
 function movieProfile(req, res, next) {
 	let mediaId = req.query;
 	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
@@ -19,20 +21,33 @@ function movieProfile(req, res, next) {
 	});
 }
 
+// Add movie controller
 function addMovieToQueue(req, res, next) {
 	console.log("route hit");
 	let mediaId = req.query;
 	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
-	.then(function(response) {	
-	let newMovie = new db.Movie ({
-		id: response.data.id,
-		title: response.data.title,
-		poster_path: response.data.poster_path,
-	});
-	console.log(newMovie);
-	req.user.queuedMovies.push(newMovie);
-	req.user.save();
-	// res.render('movie-profile', {response});
+	.then(function(response) {
+	db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+		let movies = data.queuedMovies;
+		let movieId = JSON.stringify(response.data.id);
+		let newMovie = new db.Movie ({
+					id: response.data.id,
+					title: response.data.title,
+					poster_path: response.data.poster_path,
+		});
+		console.log(newMovie);
+		let results = movies.filter(function(movie) {
+			if (movie.id.includes(movieId)) {
+				return true;
+			}
+			 return false;
+		});
+		console.log(results);
+		if(results.length == 0) {
+			req.user.queuedMovies.push(newMovie);
+			req.user.save();
+		}
+		});
 	});
 }
 
