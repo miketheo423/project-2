@@ -19,6 +19,12 @@ h1 {
 	margin-right: 1em;
 }
 
+.email-name {
+	position: relative;
+	top: 30px;
+	font-size: 100px;
+}
+
 #search-bar-btn {
 	margin-left: .5em
 }
@@ -45,7 +51,6 @@ h1 {
 	background: rgb(0,0,0);
 	min-height: 300px;
 	padding: 20px;
-	border: 1px solid white;
 }
 
 a {

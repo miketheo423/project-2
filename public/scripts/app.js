@@ -31,13 +31,13 @@ let pageNumber = 1;
 	}
 	discoverMovies();
 		// Loads more content when page hits bottom
-		var discoverScroll = $(window).scroll(function() {   
+		var discoverMovieScroll = $(window).scroll(function() {   
 			   if($(window).scrollTop() + $(window).height() == $(document).height()) {
 			   			console.log(pageNumber);
 				   		discoverMovies();
 			   }
 			});
-	}
+	
 
  
 	// Prevents enter key from refreshing page
@@ -48,7 +48,7 @@ let pageNumber = 1;
 	// Calls api to search when search form is submitted
 	$('#search-bar-btn').on('click', function() {
 		// Disables the discoverMovies function when search bar is clicked
-		$(window).off('scroll');
+		$(discoverMovieScroll).off('scroll');
 		event.preventDefault();
 		let searchQuery = $('#search-bar').val();
 		// Make the get request for shows or movies depening on the search query
@@ -79,11 +79,21 @@ let pageNumber = 1;
 		// Change populated movies based on genre dropdown
 		$('#genre-btn-movies').on('click', function() {
 			pageNumber = 1;
+			$(discoverMovieScroll).off('scroll');
+			$('.entertainment-list').empty();
+			movieGenre();
+			$(window).scroll(function() {   
+			if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			   console.log(pageNumber);
+				  movieGenre();
+			   }
+			 });
 			event.preventDefault();
+
+			function movieGenre() {
 			let genreId = $('.genres-form option:selected').val();
 			// Make the get request for the movies depending on the genre
-			$.get('https://api.themoviedb.org/3/genre/' + genreId + '/movies?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&include_adult=false&sort_by=created_at.asc').done(function(data) {
-				$('.entertainment-list').empty();
+			$.get('https://api.themoviedb.org/3/genre/' + genreId + '/movies?api_key=868e357d0f927691ad60e3d98a0ecde4&page='+ pageNumber +'&language=en-US&include_adult=false&sort_by=created_at.asc').done(function(data) {
 				let mediaList = data.results;
 				let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
@@ -98,7 +108,11 @@ let pageNumber = 1;
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 		}
 			});
+			pageNumber++;
+		}
+
 		});
+}
 
 
 /////////////////////////////////////
@@ -108,8 +122,9 @@ let pageNumber = 1;
 
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-shows') {
+		function discoverShows() {
 		// Pull the discover movies api and make it into an object
-		$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page=1').done(function(data) {
+		$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page='+ pageNumber +'').done(function(data) {
 			let mediaList = data.results;
 			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
@@ -124,6 +139,17 @@ let pageNumber = 1;
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 		}
 		});
+		pageNumber++;
+	}
+	discoverShows();
+		// Loads more content when page hits bottom
+		var discoverShowScroll = $(window).scroll(function() {   
+			   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			   			console.log(pageNumber);
+				   		discoverShows();
+			   }
+			});
+
 	
 	// Prevents enter key from refreshing page
 	$('#search-bar').submit(function() {
@@ -132,7 +158,11 @@ let pageNumber = 1;
 
 	// Calls api to search when search form is submitted
 	$('#search-bar-btn').on('click', function() {
+		$(discoverShowScroll).off('scroll');
+		searchShows();
 		event.preventDefault();
+
+		function searchShows() {
 		let searchQuery = $('#search-bar').val();
 		// Make the get request for shows or movies depening on the search query
 		$.get('https://api.themoviedb.org/3/search/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery).done(function(data) {
@@ -151,6 +181,7 @@ let pageNumber = 1;
 				}
 			}
 		});
+	}
 		//clear the search form
 		$('#search-var').val('');
 	});
@@ -158,11 +189,23 @@ let pageNumber = 1;
 	
 	// Gets tv shows based on genre
 	$('#genre-btn-tv').on('click', function() {
+		pageNumber = 1;
+		$(discoverShowScroll).off('scroll');
+		$('.entertainment-list').empty();
+		showGenre();
+			$(window).scroll(function() {   
+			if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			   console.log(pageNumber);
+				  showGenre();
+			   }
+			 });
 		event.preventDefault();
+		
+
+		function showGenre() {
 		let genreId = $('.genres-form option:selected').val();
 		//Make the get request for tv shows depending on the genre
-		$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page=1&with_genres=' + genreId).done(function(data) {
-		$('.entertainment-list').empty();
+		$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&page='+ pageNumber +'&language=en-US&sort_by=popularity.desc&with_genres=' + genreId).done(function(data) {
 			let mediaList = data.results;
 			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 			// Iterate through the results array and display the results on the page.
@@ -176,6 +219,8 @@ let pageNumber = 1;
 				$("img").addClass('col-md-3').attr('id', 'api-entertainment');
 			}
 		});
+		pageNumber++;
+	}
 	});
 }
 
