@@ -31,7 +31,7 @@ let pageNumber = 1;
 	}
 	discoverMovies();
 		// Loads more content when page hits bottom
-		$(window).scroll(function() {   
+		var discoverScroll = $(window).scroll(function() {   
 			   if($(window).scrollTop() + $(window).height() == $(document).height()) {
 			   			console.log(pageNumber);
 				   		discoverMovies();
@@ -47,6 +47,8 @@ let pageNumber = 1;
 
 	// Calls api to search when search form is submitted
 	$('#search-bar-btn').on('click', function() {
+		// Disables the discoverMovies function when search bar is clicked
+		$(window).off('scroll');
 		event.preventDefault();
 		let searchQuery = $('#search-bar').val();
 		// Make the get request for shows or movies depening on the search query
