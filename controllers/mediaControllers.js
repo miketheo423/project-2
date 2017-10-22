@@ -71,6 +71,28 @@ function addMovieToWatched(req, res, next) {
 		});
 }
 
+// Delete movie from queue
+function deleteMovieFromQueue(req, res, next) {
+	console.log("route hit");
+	let queryId = req.query.id;
+	console.log(queryId);
+		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+			let queuedMovies = data.queuedMovies;
+			let watchedMovies = data.watchedMovies;
+				for (let i = 0; i < queuedMovies.length; i++) {
+					if (queuedMovies[i].id == queryId) {
+						console.log(queuedMovies[i]);
+						req.user.queuedMovies.splice(i, 1);
+						req.user.save();
+						res.render('queued-movies', {data});
+					}
+				}
+		});
+}
+
+
+
+
 function tvProfile(req, res, next) {
 	let mediaId = req.query;
 	axios.get('https://api.themoviedb.org/3/tv/' + mediaId.id +'?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
@@ -167,5 +189,6 @@ module.exports = {
 	addMovieToWatched: addMovieToWatched,
 	addShowToWatched: addShowToWatched,
 	watchedMovies: watchedMovies,
-	watchedShows: watchedShows
+	watchedShows: watchedShows,
+	deleteMovieFromQueue: deleteMovieFromQueue,
 };

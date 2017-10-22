@@ -218,6 +218,7 @@ let pageNumber = 1;
 ////////////////////////////////
 
 	$('#queue-btn').on('click', function() {
+		console.log('clicked');
 		$('.added').empty();
 		$('.added').append('<p>' + 'Successfully Added');
 		});
@@ -228,7 +229,14 @@ let pageNumber = 1;
 // Queued Media Section //
 //////////////////////////
 
-	$('#watched-btn').on('click', function() {
-		$('.watched').empty();
-		$('.watched').append('<p>' + 'Added to Watched');
+	$('.remove-media').on('click', function() {
+		console.log('clicked');
+		let buttonVal = $(this).val();
+		console.log(buttonVal);
+		$.ajax({
+    url: '/queued-movies?id=' + buttonVal + '',
+    type: 'DELETE',
+		});
 	});
+
+

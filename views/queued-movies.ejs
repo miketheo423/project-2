@@ -9,7 +9,8 @@
 
 		   	<form action="/queued-movies?id=<%= data.queuedMovies[i].id %>" method="POST" id="watched-form<%=i%>"></form>
 		   	<button id="watched-btn" form="watched-form<%=i%>" type="submit" class="button btn btn-warning coll-md-8">Add to Watched</button>
-		   	 <button type="button" class="button btn btn-danger coll-md-8">Remove</button>
+
+		   	 <button value="<%= data.queuedMovies[i].id %>" type="button" class="button btn btn-danger coll-md-8 remove-media">Remove</button>
 
 		  	</div>
 
