@@ -7,7 +7,6 @@
 
       <!-- Portfolio Item Row -->
       <div class="row">
-
         <div class="col-md-6">
           <img class="img-fluid" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= response.data.poster_path %>" alt="">
         </div>
@@ -28,9 +27,8 @@
             <% if(response.data.homepage !== "") { %>
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
             <% } %>
-
-            <button id="queue-btn" type="submit" form="movie-form" value="Add to queue">Add to queue</button>
-
+            <button id="queue-btn" type="submit" form="movie-form" class="button btn btn-danger">Add to queue</button>
+            <button id="queue-btn" type="submit" form="movie-form" class="button btn btn-warning">Add to Watched</button>
             <div class="added">
             </div>
         </div>

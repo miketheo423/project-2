@@ -1,13 +1,18 @@
 $(function () {
 
+		
+
 /////////////////////////////////////
 ////// Disover Movies Section ///////
 /////////////////////////////////////
 
+let pageNumber = 1;
 	// Only runs this function if on the discover-shows route
+	console.log(pageNumber);
 	if (top.location.pathname === '/discover-movies') {
 		// Pull the discover movies api and make it into an object
-		$.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc').done(function(data) {
+		function discoverMovies() {
+		$.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&page=' + pageNumber + '&language=en-US&sort_by=popularity.desc').done(function(data) {
 			let mediaList = data.results;
 			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 
@@ -20,9 +25,21 @@ $(function () {
 			}
 			// Gives the imgs a bootstrap class to display four in a row.
 			$("img").addClass('col-md-3').attr('id', 'api-entertainment');
-		}
+			}
 		});
+		pageNumber++;
+	}
+	discoverMovies();
+		// Loads more content when page hits bottom
+		$(window).scroll(function() {   
+			   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			   			console.log(pageNumber);
+				   		discoverMovies();
+			   }
+			});
+	}
 
+ 
 	// Prevents enter key from refreshing page
 	$('#search-bar').submit(function() {
 		event.preventDefault();
@@ -51,13 +68,15 @@ $(function () {
 			}
 		});
 		//clear the search form
-		$('#search-var').val('');
+		$('#search-bar').val('');
 	});
+
 
 	
 
 		// Change populated movies based on genre dropdown
 		$('#genre-btn-movies').on('click', function() {
+			pageNumber = 1;
 			event.preventDefault();
 			let genreId = $('.genres-form option:selected').val();
 			// Make the get request for the movies depending on the genre
@@ -78,7 +97,6 @@ $(function () {
 		}
 			});
 		});
-	}
 
 
 /////////////////////////////////////
@@ -159,13 +177,14 @@ $(function () {
 	});
 }
 
+
 ////////////////////////////////
 // Media Profile Page Section //
 ////////////////////////////////
 
-$('#queue-btn').on('click', function() {
-	$('.added').empty();
-	$('.added').append('<p>' + 'Successfully Added');
-});
+	$('#queue-btn').on('click', function() {
+		$('.added').empty();
+		$('.added').append('<p>' + 'Successfully Added');
+	});
 
 });

@@ -24,8 +24,12 @@
             <li><span class="bold">Number of Spisodes:</span> <%= response.data.number_of_episodes %></li>
             <li><span class="bold">First Air Date:</span> <%= response.data.first_air_date %></li>
             <li><span class="bold">Vote Average:</span> <%= response.data.vote_average %></li>
+            <% if(response.data.homepage !== "") { %>
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
-            <li><button id="queue-btn" type="submit" form="tv-form" value="Add to queue">Add to queue</button></li>
+            <% } %>
+            <button id="queue-btn" type="submit" form="tv-form" class="button btn btn-danger">Add to queue</button>
+            <button id="queue-btn" type="submit" form="tv-form" class="button btn btn-warning">Add to watched</button>
+
             <div class="added">
             </div>
         </div>

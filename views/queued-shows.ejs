@@ -1,10 +1,19 @@
 <% include ./partials/header.ejs %>
+	<div class="main-container">
+		<div class="container-fluid queued-fluid-container">
+		<% for (let i = 0; i < data.queuedShows.length; i++) { %>
 
-<% for (let i = 0; i < data.queuedShows.length; i++) { %>
+			<div class="container container-queued">
+		  	<img class="col-md-3 queued" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.queuedShows[i].poster_path %>">
+		  	<div class="middle">
+		  	<a href="/tv-profile?id=<%= data.queuedShows[i].id %>" class="button btn btn-info col-md-8">Info</a>
+		   	 <button type="button" class="button btn btn-warning coll-md-8">Add to Watched</button>
+		   	 <button type="button" class="button btn btn-danger coll-md-8">Remove from Queue</button>
+		  	</div>
+			</div>
 
-	<img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.queuedShows[i].poster_path %>">
+		<% } %>
 
-<% } %>
-
-
+		</div>
+	</div>
 <% include ./partials/footer.ejs %>
