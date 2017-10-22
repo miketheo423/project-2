@@ -1,0 +1,19 @@
+<% include ./partials/header.ejs %>
+	<div class="main-container">
+		<div class="container-fluid queued-fluid-container">
+		<% for (let i = 0; i < data.watchedShows.length; i++) { %>
+			<div class="container container-queued">
+		  	<img class="col-md-3 queued" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.watchedShows[i].poster_path %>">
+		  	<div class="middle">
+		  	<a href="/movie-profile?id=<%= data.watchedShows[i].id %>" class="button btn btn-info col-md-8">Info</a>
+		   	 <button type="button" class="button btn btn-danger coll-md-8">Remove</button>
+
+		  	</div>
+
+			</div>
+
+		<% } %>
+
+		</div>
+	</div>
+<% include ./partials/footer.ejs %>

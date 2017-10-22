@@ -4,6 +4,8 @@ let MovieSchema = mongoose.Schema({
 		id: String,
 		title: String,
 		poster_path: String,
+		comment: String,
+		rating: String
 });
 
 let Movie = mongoose.model('Movie', MovieSchema);

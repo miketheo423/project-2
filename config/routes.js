@@ -53,12 +53,22 @@ router.route('/tv-profile')
 
 // Queued movies page
 router.route('/queued-movies')
-	.get(mediaController.queuedMovies);
+	.get(mediaController.queuedMovies)
+	.post(mediaController.addMovieToWatched);
+
 
 // Queued shows page
 router.route('/queued-shows')
-	.get(mediaController.queuedShows);
+	.get(mediaController.queuedShows)
+	.post(mediaController.addShowToWatched);
 
+// Watched movies page
+router.route('/watched-movies')
+.get(mediaController.watchedMovies);
+
+// Watched shows page
+router.route('/watched-movies')
+.get(mediaController.watchedShows);
 
 
 	

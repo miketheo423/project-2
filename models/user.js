@@ -9,7 +9,9 @@ let User = mongoose.Schema({
 		password: String
 	},
 	queuedMovies: [Movie.schema],
-	queuedShows: [Show.schema]
+	queuedShows: [Show.schema],
+	watchedMovies: [Movie.schema],
+	watchedShows: [Show.schema]
 });
 
 

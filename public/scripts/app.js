@@ -222,3 +222,13 @@ let pageNumber = 1;
 		$('.added').append('<p>' + 'Successfully Added');
 		});
 	});
+
+
+//////////////////////////
+// Queued Media Section //
+//////////////////////////
+
+	$('#watched-btn').on('click', function() {
+		$('.watched').empty();
+		$('.watched').append('<p>' + 'Added to Watched');
+	});
