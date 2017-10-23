@@ -26,13 +26,14 @@
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
-			      <form id="<%= data.watchedMovies[i].id %>" class="modal-body">
-			        <textarea id="<%= data.watchedMovies[i].id %>" class="comment-box">
+			      <form id="<%= data.watchedMovies[i].id %>" class="modal-body comment-movie">
+			        <textarea id="<%= data.watchedMovies[i].id %>" >
+			        <%= data.watchedMovies[i].comment %>
 			        </textarea>
 			      </form>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			        <button type="submit" form="<%= data.watchedMovies[i].id %>"class="btn btn-primary comment-movie">Save changes</button>
+			        <button type="submit" form="<%= data.watchedMovies[i].id %>" data-dismiss="modal" class="btn btn-primary">Save changes</button>
 			      </div>
 			    </div>
 			  </div>

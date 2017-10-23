@@ -320,15 +320,22 @@ let pageNumber = 1;
 	////// MODAL BUTTON /////
 	/////////////////////////
 
-	$('.container-queued').on('click','.add-comment', function() {
-		console.log('clicked');
-		let id =$(this).parents('.middle').data('movie-id');
-		console.log('id', id);
-
-		// $()
-		// let comment = $(this).val();
-		// console.log(comment);
-		// console.log(buttonVal);
+	$('.comment-movie').on('submit', function() {
+		console.log('submitted');
+		let id = $(this).attr('id');
+		console.log(id);
+		let commentMovie = $(this).children().val();
+		event.preventDefault();
+		$('exampleModal-' + id +'').modal('toggle');
+		let formData = {
+			comment: commentMovie
+		};
+		console.log(commentMovie);
+		$.ajax({
+    url: '/watched-movies?id=' + id + '',
+    type: 'PUT',
+    data: {'comment': commentMovie},
+		});
 	});
 
 

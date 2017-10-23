@@ -108,24 +108,26 @@ function deleteMovieFromWatched(req, res, next) {
 		});
 }
 
-// // Leave a comment on a movie
-// function addMovieComment(req, res, next) {
-// 	console.log("route hit");
-// 	let queryId = req.query.id;
-// 	console.log(queryId);
-// 		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
-// 			let queuedMovies = data.queuedMovies;
-// 			let watchedMovies = data.watchedMovies;
-// 				for (let i = 0; i < watchedMovies.length; i++) {
-// 					if (watchedMovies[i].id == queryId) {
-// 						console.log(watchedMovies[i]);
-// 						req.user.watchedMovies.splice(i, 1);
-// 						req.user.save();
-// 						res.render('watched-movies', {data});
-// 					}
-// 				}
-// 		});
-// }
+// Leave a comment on a movie
+function addMovieComment(req, res, next) {
+	console.log("route hit");
+	let queryId = req.query.id;
+	let commentMovie = req.body.comment;
+	console.log(commentMovie);
+	console.log(queryId);
+		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+			let queuedMovies = data.queuedMovies;
+			let watchedMovies = data.watchedMovies;
+				for (let i = 0; i < watchedMovies.length; i++) {
+					if (watchedMovies[i].id == queryId) {
+						// console.log(watchedMovies[i]);
+						req.user.watchedMovies[i].comment = commentMovie;
+						req.user.save();
+						res.render('watched-movies', {data});
+					}
+				}
+		});
+}
 
 
 function tvProfile(req, res, next) {
@@ -268,4 +270,6 @@ module.exports = {
 	deleteShowFromQueue: deleteShowFromQueue,
 	deleteMovieFromWatched: deleteMovieFromWatched,
 	deleteShowFromWatched: deleteShowFromWatched,
+	addMovieComment: addMovieComment,
+
 };
