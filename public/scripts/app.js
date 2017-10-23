@@ -1,5 +1,6 @@
 $(function () {
 
+
 let pageNumber = 1;
 const apiKey = "868e357d0f927691ad60e3d98a0ecde4";
 
