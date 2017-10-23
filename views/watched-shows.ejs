@@ -6,11 +6,37 @@
 			<div class="container container-queued">
 		  	<img class="col-md-3 queued" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.watchedShows[i].poster_path %>">
 		  	<div class="middle">
-		  	<a href="/movie-profile?id=<%= data.watchedShows[i].id %>" class="button btn btn-info col-md-8">Info</a>
+		  	<a href="/tv-profile?id=<%= data.watchedShows[i].id %>" class="button btn btn-info col-md-8">Info</a>
 		   	 <button value="<%= data.watchedShows[i].id %>" type="button" class="button btn btn-danger coll-md-8 remove-show-watched">Remove</button>
+		   	 <!-- Button trigger modal -->
+				<button type="button" class="button btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+				  Leave a comment
+				</button>
+
 		  	</div>
 			</div>
 		<% } %>
+
+<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Comments</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <form class="modal-body">
+			        <textarea class="comment-box"></textarea>
+			      </form>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="submit" form="<%= data.watchedShows[i].id %>"" class="btn btn-primary comment-show">Save changes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 
 		</div>
 	</div>

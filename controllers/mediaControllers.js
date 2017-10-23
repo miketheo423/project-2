@@ -50,7 +50,7 @@ function addMovieToQueue(req, res, next) {
 	});
 }
 
-// Add movie to watched controller//////////////////////////
+// Add movie to watched controller
 function addMovieToWatched(req, res, next) {
 	console.log("route hit");
 	let queryId = req.query.id;
@@ -107,6 +107,25 @@ function deleteMovieFromWatched(req, res, next) {
 				}
 		});
 }
+
+// // Leave a comment on a movie
+// function addMovieComment(req, res, next) {
+// 	console.log("route hit");
+// 	let queryId = req.query.id;
+// 	console.log(queryId);
+// 		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+// 			let queuedMovies = data.queuedMovies;
+// 			let watchedMovies = data.watchedMovies;
+// 				for (let i = 0; i < watchedMovies.length; i++) {
+// 					if (watchedMovies[i].id == queryId) {
+// 						console.log(watchedMovies[i]);
+// 						req.user.watchedMovies.splice(i, 1);
+// 						req.user.save();
+// 						res.render('watched-movies', {data});
+// 					}
+// 				}
+// 		});
+// }
 
 
 function tvProfile(req, res, next) {

@@ -7,6 +7,10 @@
   padding: 0px 34px 0px 0px;
 }
 
+.queued {
+  padding: 1em;
+}
+
 .container-queued {
   position: relative;
   width: 25%;
@@ -35,4 +39,13 @@
 
 .button {
   margin: .6em 0;
+}
+
+.modal-title,
+.modal-body {
+  color: black;
+}
+
+.comment-box {
+  width: 100%;
 }

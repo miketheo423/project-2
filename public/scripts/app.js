@@ -316,5 +316,20 @@ let pageNumber = 1;
 		});
 	});
 
+	/////////////////////////
+	////// MODAL BUTTON /////
+	/////////////////////////
+
+	$('.container-queued').on('click','.add-comment', function() {
+		console.log('clicked');
+		let id =$(this).parents('.middle').data('movie-id');
+		console.log('id', id);
+
+		// $()
+		// let comment = $(this).val();
+		// console.log(comment);
+		// console.log(buttonVal);
+	});
+
 
 });
