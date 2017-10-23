@@ -1,6 +1,7 @@
 var db = require('../models');
 const axios = require('axios');
 const request = require('request');
+const apiKey = "868e357d0f927691ad60e3d98a0ecde4";
 
 
 function discoverMovies(req, res, next) {
@@ -14,7 +15,7 @@ function discoverShows(req, res, next) {
 // Movie profile controller
 function movieProfile(req, res, next) {
 	let mediaId = req.query;
-	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
+	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=' + apiKey + '')
 	.then(function(response, user) {	
 	res.render('movie-profile', {response});
 	});
@@ -23,7 +24,7 @@ function movieProfile(req, res, next) {
 // Add movie to queue controller
 function addMovieToQueue(req, res, next) {
 	let mediaId = req.query;
-	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
+	axios.get('https://api.themoviedb.org/3/movie/' + mediaId.id + '?api_key=' + apiKey + '')
 	.then(function(response) {
 		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
 			let movies = data.queuedMovies;
@@ -132,7 +133,7 @@ function addMovieComment(req, res, next) {
 
 function tvProfile(req, res, next) {
 	let mediaId = req.query;
-	axios.get('https://api.themoviedb.org/3/tv/' + mediaId.id +'?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
+	axios.get('https://api.themoviedb.org/3/tv/' + mediaId.id +'?api_key=' + apiKey + '')
 	.then(function(response) {
 	res.render('tv-profile', {response});
 	});
@@ -140,7 +141,7 @@ function tvProfile(req, res, next) {
 
 function addShowToQueue(req, res, next) {
 	let mediaId = req.query;
-	axios.get('https://api.themoviedb.org/3/tv/' + mediaId.id + '?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US')
+	axios.get('https://api.themoviedb.org/3/tv/' + mediaId.id + '?api_key=' + apiKey + '')
 	.then(function(response) {
 		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
 			let shows = data.queuedShows;

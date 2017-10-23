@@ -35,44 +35,44 @@ router.route('/logout')
 
 // Discover movies page route
 router.route('/discover-movies')
- 	.get(mediaController.discoverMovies);
+ 	.get(authenticatedUser,mediaController.discoverMovies);
 
 // Discover shows page route
 router.route('/discover-shows')
-	.get(mediaController.discoverShows);
+	.get(authenticatedUser,mediaController.discoverShows);
 
 // Movie-profile page
 router.route('/movie-profile')
-	.get(mediaController.movieProfile)
+	.get(authenticatedUser,mediaController.movieProfile)
 	.post(mediaController.addMovieToQueue);
 
 // TV-profile page
 router.route('/tv-profile')
-	.get(mediaController.tvProfile)
+	.get(authenticatedUser,mediaController.tvProfile)
 	.post(mediaController.addShowToQueue);
 
 // Queued movies page
 router.route('/queued-movies')
-	.get(mediaController.queuedMovies)
+	.get(authenticatedUser,mediaController.queuedMovies)
 	.post(mediaController.addMovieToWatched)
 	.delete(mediaController.deleteMovieFromQueue);
 
 
 // Queued shows page
 router.route('/queued-shows')
-	.get(mediaController.queuedShows)
+	.get(authenticatedUser,mediaController.queuedShows)
 	.post(mediaController.addShowToWatched)
 	.delete(mediaController.deleteShowFromQueue);
 
 // Watched movies page
 router.route('/watched-movies')
-.get(mediaController.watchedMovies)
+.get(authenticatedUser,mediaController.watchedMovies)
 .delete(mediaController.deleteMovieFromWatched)
 .put(mediaController.addMovieComment);
 
 // Watched shows page
 router.route('/watched-shows')
-.get(mediaController.watchedShows)
+.get(authenticatedUser,mediaController.watchedShows)
 .delete(mediaController.deleteShowFromWatched)
 .put(mediaController.addShowComment);
 
