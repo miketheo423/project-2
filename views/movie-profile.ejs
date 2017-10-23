@@ -28,14 +28,11 @@
             <li><span class="bold">Homepage:</span> <a target="_blank" href="<%- response.data.homepage %>"><%= response.data.homepage %></a></li>
             <% } %>
             <button id="queue-btn" type="submit" form="movie-form" class="button btn btn-danger">Add to queue</button>
-            <button id="queue-btn" type="submit" form="movie-form" class="button btn btn-warning">Add to Watched</button>
             <div class="added">
             </div>
         </div>
         <form action='/movie-profile?id=<%= response.data.id %>' method="POST" id="movie-form"</form>
-
       </div>
-      <!-- /.row -->
 
 
 <% include ./partials/footer.ejs %>

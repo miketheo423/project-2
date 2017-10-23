@@ -1,19 +1,17 @@
 <% include ./partials/header.ejs %>
+
 	<div class="main-container">
 		<div class="container-fluid queued-fluid-container">
 		<% for (let i = 0; i < data.watchedMovies.length; i++) { %>
 			<div class="container container-queued">
-		  	<img class="col-md-3 queued" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.watchedMovies[i].poster_path %>">
-		  	<div class="middle">
-		  	<a href="/movie-profile?id=<%= data.watchedMovies[i].id %>" class="button btn btn-info col-md-8">Info</a>
-		   	 <button value="<%= data.watchedMovies[i].id %>" type="button" class="button btn btn-danger coll-md-8 remove-movie-watched">Remove</button>
-
-		  	</div>
-
+			  	<img class="col-md-4 queued" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2<%= data.watchedMovies[i].poster_path %>">
+			  	<div class="middle">
+				  	<a href="/movie-profile?id=<%= data.watchedMovies[i].id %>" class="button btn btn-info col-md-8">Info</a>
+				   	 <button value="<%= data.watchedMovies[i].id %>" type="button" class="button btn btn-danger coll-md-8 remove-movie-watched">Remove</button>
+			   	</div>
 			</div>
-
 		<% } %>
-
 		</div>
 	</div>
+	
 <% include ./partials/footer.ejs %>

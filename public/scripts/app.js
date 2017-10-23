@@ -6,7 +6,6 @@ let pageNumber = 1;
 ////// Disover Movies Section ///////
 /////////////////////////////////////
 
-
 	////////////////////////////
 	////// Movies Discover /////
 	////////////////////////////
@@ -15,7 +14,8 @@ let pageNumber = 1;
 	if (top.location.pathname === '/discover-movies') {
 		// Pull the discover movies api and make it into an object
 		function discoverMovies() {
-			$.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&page=' + pageNumber + '&language=en-US&sort_by=popularity.desc').done(function(data) {
+			$.get('https://api.themoviedb.org/3/discover/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&page=' + pageNumber + '&language=en-US&sort_by=popularity.desc')
+			.done(function(data) {
 				let mediaList = data.results;
 				let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 				// Iterate through the results array and display the results on the page.
@@ -57,7 +57,8 @@ let pageNumber = 1;
 		event.preventDefault();
 		let searchQuery = $('#search-bar').val();
 		// Make the get request for shows or movies depening on the search query
-		$.get('https://api.themoviedb.org/3/search/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery).done(function(data) {
+		$.get('https://api.themoviedb.org/3/search/movie?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery)
+		.done(function(data) {
 			$('.entertainment-list').empty();
 			let mediaList = data.results;
 			let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
@@ -93,7 +94,8 @@ let pageNumber = 1;
 			function movieGenre() {
 				let genreId = $('.genres-form option:selected').val();
 				// Make the get request for the movies depending on the genre
-				$.get('https://api.themoviedb.org/3/genre/' + genreId + '/movies?api_key=868e357d0f927691ad60e3d98a0ecde4&page='+ pageNumber +'&language=en-US&include_adult=false&sort_by=created_at.asc').done(function(data) {
+				$.get('https://api.themoviedb.org/3/genre/' + genreId + '/movies?api_key=868e357d0f927691ad60e3d98a0ecde4&page='+ pageNumber +'&language=en-US&include_adult=false&sort_by=created_at.asc')
+				.done(function(data) {
 					let mediaList = data.results;
 					let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 					for (let i = 0; i < mediaList.length; i++) {
@@ -124,7 +126,8 @@ let pageNumber = 1;
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-shows') {
 		function discoverShows() {
-			$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page='+ pageNumber +'').done(function(data) {
+			$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&sort_by=popularity.desc&page='+ pageNumber +'')
+			.done(function(data) {
 				let mediaList = data.results;
 				let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 				for (let i = 0; i < mediaList.length; i++) {
@@ -161,7 +164,8 @@ let pageNumber = 1;
 
 		function searchShows() {
 			let searchQuery = $('#search-bar').val();
-			$.get('https://api.themoviedb.org/3/search/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery).done(function(data) {
+			$.get('https://api.themoviedb.org/3/search/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&language=en-US&query=' + searchQuery)
+			.done(function(data) {
 				$('.entertainment-list').empty();
 				let mediaList = data.results;
 				let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
@@ -196,7 +200,8 @@ let pageNumber = 1;
 		
 		function showGenre() {
 			let genreId = $('.genres-form option:selected').val();
-			$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&page='+ pageNumber +'&language=en-US&sort_by=popularity.desc&with_genres=' + genreId).done(function(data) {
+			$.get('https://api.themoviedb.org/3/discover/tv?api_key=868e357d0f927691ad60e3d98a0ecde4&page='+ pageNumber +'&language=en-US&sort_by=popularity.desc&with_genres=' + genreId)
+			.done(function(data) {
 				let mediaList = data.results;
 				let mediaPoster = "https://image.tmdb.org/t/p/w370_and_h556_bestv2";
 				for (let i = 0; i < mediaList.length; i++) {
@@ -222,7 +227,6 @@ let pageNumber = 1;
 		$('.added').empty();
 		$('.added').append('<p>' + 'Successfully Added');
 		});
-	});
 
 
 //////////////////////////
@@ -282,6 +286,10 @@ let pageNumber = 1;
 		});
 	});
 
+///////////////////////////
+// Watched Media Section //
+///////////////////////////
+
 	$('.remove-movie-watched').on('click', function() {
 		console.log('clicked');
 		let buttonVal = $(this).val();
@@ -309,3 +317,4 @@ let pageNumber = 1;
 	});
 
 
+});
