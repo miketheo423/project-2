@@ -338,5 +338,23 @@ let pageNumber = 1;
 		});
 	});
 
+	$('.comment-show').on('submit', function() {
+		console.log('submitted');
+		let id = $(this).attr('id');
+		console.log(id);
+		let commentShow = $(this).children().val();
+		event.preventDefault();
+		$('exampleModal-' + id +'').modal('toggle');
+		let formData = {
+			comment: commentShow
+		};
+		console.log(commentShow);
+		$.ajax({
+    url: '/watched-shows?id=' + id + '',
+    type: 'PUT',
+    data: {'comment': commentShow},
+		});
+	});
+
 
 });

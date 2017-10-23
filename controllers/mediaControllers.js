@@ -112,7 +112,7 @@ function deleteMovieFromWatched(req, res, next) {
 function addMovieComment(req, res, next) {
 	console.log("route hit");
 	let queryId = req.query.id;
-	let commentMovie = req.body.comment;
+	let commentMovie = req.body.commentMovie;
 	console.log(commentMovie);
 	console.log(queryId);
 		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
@@ -225,6 +225,27 @@ function deleteShowFromWatched(req, res, next) {
 		});
 }
 
+// Leave a comment on a show
+function addShowComment(req, res, next) {
+	console.log("route hit");
+	let queryId = req.query.id;
+	let commentShow = req.body.comment;
+	console.log(commentShow);
+	console.log(queryId);
+		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+			let queuedShows = data.queuedShows;
+			let watchedShows = data.watchedShows;
+				for (let i = 0; i < watchedShows.length; i++) {
+					if (watchedShows[i].id == queryId) {
+						// console.log(watchedMovies[i]);
+						req.user.watchedShows[i].comment = commentShow;
+						req.user.save();
+						res.render('watched-movies', {data});
+					}
+				}
+		});
+}
+
 function queuedMovies(req, res, next) {
 	db.User.findOne({'local.email' : req.user.local.email}, function(err, data){
 		if (err) throw err;
@@ -271,5 +292,5 @@ module.exports = {
 	deleteMovieFromWatched: deleteMovieFromWatched,
 	deleteShowFromWatched: deleteShowFromWatched,
 	addMovieComment: addMovieComment,
-
+	addShowComment: addShowComment
 };
