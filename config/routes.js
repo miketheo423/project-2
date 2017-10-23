@@ -61,15 +61,18 @@ router.route('/queued-movies')
 // Queued shows page
 router.route('/queued-shows')
 	.get(mediaController.queuedShows)
-	.post(mediaController.addShowToWatched);
+	.post(mediaController.addShowToWatched)
+	.delete(mediaController.deleteShowFromQueue);
 
 // Watched movies page
 router.route('/watched-movies')
-.get(mediaController.watchedMovies);
+.get(mediaController.watchedMovies)
+.delete(mediaController.deleteMovieFromWatched);
 
 // Watched shows page
 router.route('/watched-shows')
-.get(mediaController.watchedShows);
+.get(mediaController.watchedShows)
+.delete(mediaController.deleteShowFromWatched);
 
 
 	

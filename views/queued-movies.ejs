@@ -7,10 +7,9 @@
 		  	<div class="middle">
 		  	<a href="/movie-profile?id=<%= data.queuedMovies[i].id %>" class="button btn btn-info col-md-8">Info</a>
 
-		   	<form action="/queued-movies?id=<%= data.queuedMovies[i].id %>" method="POST" id="watched-form<%=i%>"></form>
-		   	<button id="watched-btn" form="watched-form<%=i%>" type="submit" class="button btn btn-warning coll-md-8">Add to Watched</button>
+		   	<button value="<%= data.queuedMovies[i].id %>" type="button" class="button btn btn-warning coll-md-8 watched-movie">Add to Watched</button>
 
-		   	 <button value="<%= data.queuedMovies[i].id %>" type="button" class="button btn btn-danger coll-md-8 remove-media">Remove</button>
+		   	 <button value="<%= data.queuedMovies[i].id %>" type="button" class="button btn btn-danger coll-md-8 remove-movie-queue">Remove</button>
 
 		  	</div>
 

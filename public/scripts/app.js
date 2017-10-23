@@ -229,13 +229,82 @@ let pageNumber = 1;
 // Queued Media Section //
 //////////////////////////
 
-	$('.remove-media').on('click', function() {
+		$('.watched-movie').on('click', function() {
+		console.log('clicked');
+		let buttonVal = $(this).val();
+		console.log(buttonVal);
+		$.ajax({
+    url: '/queued-movies?id=' + buttonVal + '',
+    type: 'POST',
+		})
+		.done(function() {
+			window.location.replace('/queued-movies');
+		});
+	});
+
+		$('.watched-show').on('click', function() {
+		console.log('clicked');
+		let buttonVal = $(this).val();
+		console.log(buttonVal);
+		$.ajax({
+    url: '/queued-shows?id=' + buttonVal + '',
+    type: 'POST',
+		})
+		.done(function() {
+			window.location.replace('/queued-shows');
+		});
+	});
+
+
+	$('.remove-movie-queue').on('click', function() {
 		console.log('clicked');
 		let buttonVal = $(this).val();
 		console.log(buttonVal);
 		$.ajax({
     url: '/queued-movies?id=' + buttonVal + '',
     type: 'DELETE',
+		})
+		.done(function() {
+			window.location.replace('/queued-movies');
+		});
+	});
+
+	$('.remove-show-queue').on('click', function() {
+		console.log('clicked');
+		let buttonVal = $(this).val();
+		console.log(buttonVal);
+		$.ajax({
+    url: '/queued-shows?id=' + buttonVal + '',
+    type: 'DELETE',
+		})
+		.done(function() {
+			window.location.replace('/queued-shows');
+		});
+	});
+
+	$('.remove-movie-watched').on('click', function() {
+		console.log('clicked');
+		let buttonVal = $(this).val();
+		console.log(buttonVal);
+		$.ajax({
+    url: '/watched-movies?id=' + buttonVal + '',
+    type: 'DELETE',
+		})
+		.done(function() {
+			window.location.replace('/watched-movies');
+		});
+	});
+
+	$('.remove-show-watched').on('click', function() {
+		console.log('clicked');
+		let buttonVal = $(this).val();
+		console.log(buttonVal);
+		$.ajax({
+    url: '/watched-shows?id=' + buttonVal + '',
+    type: 'DELETE',
+		})
+		.done(function() {
+			window.location.replace('/watched-shows');
 		});
 	});
 

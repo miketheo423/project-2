@@ -65,9 +65,9 @@ function addMovieToWatched(req, res, next) {
 						req.user.watchedMovies.push(queuedMovies[i]);
 						req.user.queuedMovies.splice(i, 1);
 						req.user.save();
+						res.render('queued-movies', {data});
 					}
 				}
-			res.render('queued-movies', {data});
 		});
 }
 
@@ -90,7 +90,24 @@ function deleteMovieFromQueue(req, res, next) {
 		});
 }
 
-
+// Delete movie from watched
+function deleteMovieFromWatched(req, res, next) {
+	console.log("route hit");
+	let queryId = req.query.id;
+	console.log(queryId);
+		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+			let queuedMovies = data.queuedMovies;
+			let watchedMovies = data.watchedMovies;
+				for (let i = 0; i < watchedMovies.length; i++) {
+					if (watchedMovies[i].id == queryId) {
+						console.log(watchedMovies[i]);
+						req.user.watchedMovies.splice(i, 1);
+						req.user.save();
+						res.render('watched-movies', {data});
+					}
+				}
+		});
+}
 
 
 function tvProfile(req, res, next) {
@@ -143,9 +160,48 @@ function addShowToWatched(req, res, next) {
 						req.user.watchedShows.push(queuedShows[i]);
 						req.user.queuedShows.splice(i, 1);
 						req.user.save();
+						res.render('queued-shows', {data});
 					}
 				}
-				res.render('queued-shows', {data});
+		});
+
+}
+
+// Delete show from queue
+function deleteShowFromQueue(req, res, next) {
+	console.log("route hit");
+	let queryId = req.query.id;
+	console.log(queryId);
+		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+			let queuedShows = data.queuedShows;
+			let watchedShows = data.watchedShows;
+				for (let i = 0; i < queuedShows.length; i++) {
+					if (queuedShows[i].id == queryId) {
+						console.log(queuedShows[i]);
+						req.user.queuedShows.splice(i, 1);
+						req.user.save();
+						res.render('queued-shows', {data});
+					}
+				}
+		});
+}
+
+// Delete show from watched
+function deleteShowFromWatched(req, res, next) {
+	console.log("route hit");
+	let queryId = req.query.id;
+	console.log(queryId);
+		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {
+			let queuedShows = data.queuedShows;
+			let watchedShows = data.watchedShows;
+				for (let i = 0; i < watchedShows.length; i++) {
+					if (watchedShows[i].id == queryId) {
+						console.log(watchedShows[i]);
+						req.user.watchedShows.splice(i, 1);
+						req.user.save();
+						res.render('watched-shows', {data});
+					}
+				}
 		});
 }
 
@@ -191,4 +247,7 @@ module.exports = {
 	watchedMovies: watchedMovies,
 	watchedShows: watchedShows,
 	deleteMovieFromQueue: deleteMovieFromQueue,
+	deleteShowFromQueue: deleteShowFromQueue,
+	deleteMovieFromWatched: deleteMovieFromWatched,
+	deleteShowFromWatched: deleteShowFromWatched,
 };
