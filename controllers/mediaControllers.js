@@ -112,7 +112,7 @@ function deleteMovieFromWatched(req, res, next) {
 function addMovieComment(req, res, next) {
 	console.log("route hit");
 	let queryId = req.query.id;
-	let commentMovie = req.body.commentMovie;
+	let commentMovie = req.body.comment;
 	console.log(commentMovie);
 	console.log(queryId);
 		db.User.findOne({'local.email' : req.user.local.email}, function(err, data) {

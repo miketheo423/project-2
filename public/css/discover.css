@@ -1,6 +1,5 @@
 body {	
 	min-height: 100vh;
-	/*background-color: rgb(204, 17, 34);*/
 	background-image: url('../img/redder-chairs.jpeg');
 	background-size: cover;
 }
@@ -9,6 +8,7 @@ body {
 	text-align: right;
 }
 
+/* Hamburger menu button */
 .navbar-toggler {
 	background-color: rgba(0,0,0,.3);
 }
@@ -19,21 +19,17 @@ h1 {
 	margin-right: 1em;
 }
 
-.email-name {
-	position: relative;
-	top: 30px;
-	font-size: 100px;
-}
-
+/* Search bar button*/
 #search-bar-btn {
 	margin-left: .5em
 }
 
+/*Genre button */
 #genre-btn-movies {
 	margin-left: .5em;
 }
 
-
+/* Search and genre forms */
 .form-control {
 	width: 50%;
 	display: inline-block;
@@ -52,6 +48,11 @@ h1 {
 	padding: 20px;
 }
 
+#api-entertainment:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
 a {
 	color: white;
 }
@@ -60,6 +61,8 @@ a:hover {
 	color: red;
 }
 
+
+/* Nav Bar */
 #fixed-bar {
 	position: fixed;
 	width: 100%;
@@ -68,18 +71,13 @@ a:hover {
 
 }
 
-#api-entertainment:hover {
-  opacity: 0.5;
-  filter: alpha(opacity=50); /* For IE8 and earlier */
-}
-
 h3 {
 	margin-right: 1em;
 }
 
-.main-container {
+.main-container-discover {
 	position: absolute;
-	top: 5em;
+	top: 3em;
 }
 
 .my-nav {

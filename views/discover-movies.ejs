@@ -1,37 +1,39 @@
 <% include ./partials/header.ejs %>
 
-<div class="main-container container-fluid">
-<form id="search-form" >
-  <div class="form-group">
-    <input id="search-bar" type="search" class="form-control" id="exampleFormControlInput1" placeholder="Search name of movie">
-    <button id="search-bar-btn" type="submit" class="btn btn-outline-success">Search</button>
-  </div>
-</form>
-<form  class="form-inline genres-form">
-  <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
-    <option selected>Choose Genre...</option>
-    <option value="28">Action</option>
-    <option value="12">Adventure</option>
-    <option value="16">Animation</option>
-    <option value="35">Comedy</option>
-    <option value="80">Crime</option>
-    <option value="99">Documentary</option>
-    <option value="18">Drama</option>
-    <option value="10751">Family</option>
-    <option value="14">Fantasy</option>
-    <option value="36">History</option>
-    <option value="27">Horror</option>
-    <option value="10402">Music</option>
-    <option value="9648">Mystery</option>
-    <option value="10749">Romance</option>
-    <option value="878">Science Fiction</option>
-    <option value="10770">TV Movie</option>
-    <option value="53">Thriller</option>
-    <option value="10752">War</option>
-    <option value="37">Western</option>
-  </select>
-  <button id="genre-btn-movies" type="submit" class="btn btn-outline-success">Search</button>
-</form>
+<div class="main-container-discover container-fluid">
+
+  <h1 class="form-group">Movies</h1>
+  <form id="search-form" >
+    <div class="form-group">
+      <input id="search-bar" type="search" class="form-control" id="exampleFormControlInput1" placeholder="Search name of movie">
+      <button id="search-bar-btn" type="submit" class="btn btn-outline-success">Search</button>
+    </div>
+  </form>
+  <form  class="form-inline genres-form">
+    <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelectPref">
+      <option selected>Choose Genre</option>
+      <option value="28">Action</option>
+      <option value="12">Adventure</option>
+      <option value="16">Animation</option>
+      <option value="35">Comedy</option>
+      <option value="80">Crime</option>
+      <option value="99">Documentary</option>
+      <option value="18">Drama</option>
+      <option value="10751">Family</option>
+      <option value="14">Fantasy</option>
+      <option value="36">History</option>
+      <option value="27">Horror</option>
+      <option value="10402">Music</option>
+      <option value="9648">Mystery</option>
+      <option value="10749">Romance</option>
+      <option value="878">Science Fiction</option>
+      <option value="10770">TV Movie</option>
+      <option value="53">Thriller</option>
+      <option value="10752">War</option>
+      <option value="37">Western</option>
+    </select>
+    <button id="genre-btn-movies" type="submit" class="btn btn-outline-success">Search</button>
+  </form>
 
 	<div class="container-fluid entertainment-list">
     

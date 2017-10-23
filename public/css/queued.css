@@ -3,12 +3,9 @@
   top: 6em;
 }
 
-.col-md-2 {
-  padding: 0px 34px 0px 0px;
-}
-
 .queued {
   padding: 1em;
+  width: 20em;
 }
 
 .container-queued {

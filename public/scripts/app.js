@@ -326,7 +326,6 @@ let pageNumber = 1;
 		console.log(id);
 		let commentMovie = $(this).children().val();
 		event.preventDefault();
-		$('exampleModal-' + id +'').modal('toggle');
 		let formData = {
 			comment: commentMovie
 		};
@@ -335,6 +334,9 @@ let pageNumber = 1;
     url: '/watched-movies?id=' + id + '',
     type: 'PUT',
     data: {'comment': commentMovie},
+		})
+		.done(function() {
+			window.location.replace('/watched-movies');
 		});
 	});
 
@@ -344,7 +346,6 @@ let pageNumber = 1;
 		console.log(id);
 		let commentShow = $(this).children().val();
 		event.preventDefault();
-		$('exampleModal-' + id +'').modal('toggle');
 		let formData = {
 			comment: commentShow
 		};
@@ -353,7 +354,11 @@ let pageNumber = 1;
     url: '/watched-shows?id=' + id + '',
     type: 'PUT',
     data: {'comment': commentShow},
+		})
+		.done(function() {
+			window.location.replace('/watched-shows');
 		});
+
 	});
 
 
