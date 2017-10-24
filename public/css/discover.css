@@ -12,6 +12,9 @@ body {
 	background-color: #dc3545!important;
 	color: white!important;
 	z-index: 5;
+	position: fixed;
+	width: 100%;
+	top: 0;
 }
 
 h1 {

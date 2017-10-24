@@ -4,6 +4,24 @@ $(function () {
 let pageNumber = 1;
 const apiKey = "868e357d0f927691ad60e3d98a0ecde4";
 
+////////////////////////////////////
+////// Home Button Conditionals/////
+////////////////////////////////////
+
+function homeButtonMovies() {
+	$('.home-media').attr('href', '/discover-movies');
+}
+
+function homeButtonShows() {
+	$('.home-media').attr('href', '/discover-shows');
+}
+
+if (top.location.pathname === '/discover-movies' || top.location.pathname === '/queued-movies' || top.location.pathname === '/watched-movies') {
+	homeButtonMovies();
+} else {
+	homeButtonShows();
+}
+
 /////////////////////////////////////
 ////// Disover Movies Section ///////
 /////////////////////////////////////
@@ -127,6 +145,10 @@ const apiKey = "868e357d0f927691ad60e3d98a0ecde4";
 
 	// Only runs this function if on the discover-shows route
 	if (top.location.pathname === '/discover-shows') {
+
+		// Makes the "Watch This" logo navigate to discover movies if on movie page
+		$('.home-media').attr('href', '/discover-shows');
+
 		function discoverShows() {
 			$.get('https://api.themoviedb.org/3/discover/tv?api_key=' + apiKey + '&language=en-US&sort_by=popularity.desc&page='+ pageNumber +'')
 			.done(function(data) {
