@@ -29,6 +29,10 @@ When a user chooses to add media to their watched list, the media is deleted fro
 
 In the Schema movies and shows, there is an empty comment property. When users choose to leave a comment on the media, the comment is technically being edited each time.
 
+### Unsolved Problems:
+* When the user clicks on a link it brings them to a new page to view the media profile. When the user hits the back button, they are not taken back to the same spot when returning to the disover page.
+* Couldn't get the modal to close on submit, used a refresh page method instead.
+* Didn't have time to implement a rating system
 
-
-
+### What I Would have done differently:
+* Instead of using embedded data to push movies and shows onto users, I would have probably have a movie and show collection and referenced them to the users as they added to their queues. This way, once a user adds a movies to their queue, it will now be in the DB and other users could leave comments on the media that everyone could see, forum style. This would also limit the amount of API calls being made.
