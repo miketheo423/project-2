@@ -11,6 +11,7 @@ body {
 .navbar {
 	background-color: #dc3545!important;
 	color: white!important;
+	z-index: 5;
 }
 
 h1 {
