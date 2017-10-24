@@ -11,22 +11,37 @@
 
 </head>
 <body>
-	<div id="fixed-bar" class="pos-f-t">
-  <div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-info p-4 ">
-        <h4 class="text-white "><a href="/queued-movies">Queued Movies</a></h4>
-        <h4 class="text-white "><a href="/queued-shows">Queued Shows</a></h4>
-        <h4 class="text-white "><a href="/watched-movies">Watched Movies</a></h4>
-        <h4 class="text-white "><a href="/watched-shows">Watched Shows</a></h4>
-        <h4 class="text-white "><a href="/discover-movies">Discover Movies</a></h4>
-        <h4 class="text-white "><a href="/discover-shows">Discover Shows</a></h4>
-        <h4 class="text-white "><a href="/logout">Logout</a></h4>
-    </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Watch This.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Movies
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/discover-movies">Discover</a>
+          <a class="dropdown-item" href="/queued-movies">Queued</a>
+          <a class="dropdown-item" href="/watched-movies">Watched</a>
+        </div>
+      </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Shows
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/discover-shows">Discover</a>
+          <a class="dropdown-item" href="/queued-shows">Queued</a>
+          <a class="dropdown-item" href="/watched-shows">Watched</a>
+        </div>
+      </li>
+         <li class="nav-item">
+        <a class="nav-link" href="/logout">Logout</a>
+      </li>
+    </ul>
   </div>
-  <nav class="navbar navbar-dark bg-danger">
-    <h3>Watch This.</h3>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </nav>
+</nav>
 </div>

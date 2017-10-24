@@ -8,15 +8,29 @@ body {
 	text-align: right;
 }
 
-/* Hamburger menu button */
-.navbar-toggler {
-	background-color: rgba(0,0,0,.3);
+.navbar {
+	background-color: #dc3545!important;
+	color: white!important;
 }
 
 h1 {
 	color: white;
 	font-size: 3.5em;
 	margin-right: 1em;
+	padding-top: .5em;
+}
+
+.nav-link {
+	color: white!important;;
+}
+
+.navbar-brand {
+	font-size: 2em;
+	color: white!important;
+}
+
+.navbar-nav {
+	float: right;
 }
 
 /* Search bar button*/
@@ -26,7 +40,11 @@ h1 {
 
 /*Genre button */
 #genre-btn-movies {
-	margin-left: .5em;
+	margin-left: .6em;
+}
+
+#genre-btn-tv {
+	margin-left: .6em;
 }
 
 /* Search and genre forms */
@@ -84,6 +102,14 @@ h3 {
 	color: red;
 }
 
+@media (min-width: 992px) {
+.navbar-expand-lg,
+.navbar-collapse {
+    display: -ms-flexbox!important;
+    justify-content: flex-end;
+    display: flex!important;
+   }
+}
 
 
 /* Loads page with a fade-in animation */

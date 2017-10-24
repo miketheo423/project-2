@@ -39,4 +39,5 @@ In the Schema movies and shows, there is an empty comment property. When users c
 ### What I Would have done differently:
 * Instead of using embedded data to push movies and shows onto users, I would have probably have a movie and show collection and referenced them to the users as they added to their queues. This way, once a user adds a movies to their queue, it will now be in the DB and other users could leave comments on the media that everyone could see, forum style. This would also limit the amount of API calls being made.
 
+* Changed the Nav bar, it doesnt make sense from a UX perspective to have a hamburger menu at all times. It should only be implemented in the mobile version.
 
