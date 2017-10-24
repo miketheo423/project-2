@@ -16,7 +16,7 @@ function homeButtonShows() {
 	$('.home-media').attr('href', '/discover-shows');
 }
 
-if (top.location.pathname === '/discover-movies' || top.location.pathname === '/queued-movies' || top.location.pathname === '/watched-movies') {
+if (top.location.pathname === '/discover-movies' || top.location.pathname === '/queued-movies' || top.location.pathname === '/watched-movies' || top.location.pathname === '/movie-profile') {
 	homeButtonMovies();
 } else {
 	homeButtonShows();
