@@ -1,6 +1,10 @@
 .main-container {
   position: relative;
-  top: 6em;
+  top: 5em;
+}
+
+.list-media {
+  text-align: center;
 }
 
 .queued {
