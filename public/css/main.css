@@ -13,7 +13,7 @@ a:hover {
   color: #333;
   text-shadow: none; /* Prevent inheritance from `body` */
   background-color: #fff;
-  border: .05rem solid #fff;
+  /*border: .05rem solid #fff;*/
   /*width: 10em;*/
   margin: 0 .5em;
 }
@@ -104,6 +104,13 @@ body {
 .nav-masthead .active {
   color: #fff;
   border-bottom-color: #fff;
+}
+
+/* Sign up Button on main page */
+.sign-up {
+  color: white;
+  background-color: red;
+  border: none;
 }
 
 @media (min-width: 48em) {
